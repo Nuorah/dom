@@ -1,10 +1,18 @@
 var app = {
-	init: function () {
-		
+	init: function () {	
+
+		function gaucheDroite (event){
+			console.log("x :" + event.x + ", y :" + event.y);
+			if (event.x >= window.innerWidth/2){
+				console.log("DROITE");
+				event.target.classList.add('text-red');
+			} else {
+				console.log("GAUCHE");
+				event.target.classList.remove('text-red');
+			}
+		}	
 	}
 };
-
-
 
 var titleIdElement = document.getElementById('title-1')
 
@@ -17,16 +25,7 @@ titleIdElement.addEventListener('click', function(){
 	+ " veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 	+ " Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
 	+ " Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. "
-	newPElement.addEventListener('mouseover', function(event){
-		console.log("x :" + event.x + ", y :" + event.y);
-		if (event.x >= window.innerWidth/2){
-			console.log("DROITE");
-			newPElement.classList.add('text-red');
-		} else {
-			console.log("GAUCHE");
-			newPElement.classList.remove('text-red');
-		}
-	})
+	newPElement.addEventListener('mouseover', gaucheDroite)
 	document.body.append(newPElement);
 })
 
@@ -34,16 +33,7 @@ var pElements = document.getElementsByTagName('P');
 
 for (var i = pElements.length - 1; i >= 0; i--) {
 	var element = pElements[i]
-	element.addEventListener('mouseover', function(event){
-		console.log("x :" + event.x + ", y :" + event.y);
-		if (event.x >= window.innerWidth/2){
-			console.log("DROITE");
-			element.classList.add('text-red');
-		} else {
-			console.log("GAUCHE");
-			element.classList.remove('text-red');
-		}
-	})
+	element.addEventListener('mouseover', gaucheDroite)
 	pElements[i].addEventListener('mouseout', function(event){
 		console.log("x :" + event.x + ", y :" + event.y);
 	})
